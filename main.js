@@ -1,7 +1,6 @@
 const ROAST_DEGREE = 1;
-const BOTTOM_INTERVAL = 50;
-const TOP_INTERVAL = 700;
-const ROAST_CHECK_INTERVAL = 100;
+const BOTTOM_INTERVAL = 70;
+const TOP_INTERVAL = 400;
 const INITIAL_STEAK_COLOR = [255, 195, 201];
 
 const steak = document.getElementById("steak");
@@ -12,7 +11,6 @@ const removeButton = document.getElementById("remove");
 const rawInfo = document.getElementById("raw");
 const doneInfo = document.getElementById("done");
 const burntInfo = document.getElementById("burnt");
-const gameTitle = document.querySelector(".title");
 
 let raw = 0;
 let done = 0;
@@ -49,13 +47,11 @@ const setAfterStartStyle = () => {
 
 class Grill {
   constructor() {
-    Object.keys(this.colors).map(key => {
-      setCSSVariable(key, this.colors[key]);
-    });
-
     startButton.addEventListener("click", () => {
+      Object.keys(this.colors).map(key => {
+        setCSSVariable(key, this.colors[key]);
+      });
       this.startRoasting();
-      this.startTimer();
       setAfterStartStyle();
     });
 
@@ -75,20 +71,21 @@ class Grill {
       ];
 
       if (
-        firstRgb < 255 &&
+        firstRgb <= 255 &&
         firstRgb > 200 &&
-        secondRgb < 255 &&
+        secondRgb <= 255 &&
         secondRgb > 200
       ) {
+        console.log("aa");
         clearIntervals(intervalsToStop);
         raw++;
         rawInfo.textContent = raw;
         setBeforeStartStyle();
       } else if (
-        firstRgb < 200 &&
-        firstRgb > 60 &&
-        secondRgb < 200 &&
-        secondRgb > 60
+        firstRgb <= 200 &&
+        firstRgb > 40 &&
+        secondRgb <= 200 &&
+        secondRgb > 40
       ) {
         clearIntervals(intervalsToStop);
         done++;
@@ -121,27 +118,14 @@ class Grill {
     setCSSVariable(variableName, this.colors[variableName]);
   };
 
-  startTimer = () => {
-    this.roastCheckInterval = setInterval(() => {
-      const isBlack = Object.keys(this.colors).every(key =>
-        colorIsBlack(this.colors[key])
-      );
-
-      if (isBlack) {
-        clearInterval(this.roastCheckInterval);
-        burnt++;
-        burntInfo.textContent = burnt;
-        setBeforeStartStyle();
-      }
-    }, ROAST_CHECK_INTERVAL);
-  };
-
   startRoasting = () => {
     const gameOver = () => {
       burnt++;
       burntInfo.textContent = burnt;
       clearIntervals([this.interval1, this.interval2, this.roastCheckInterval]);
       setBeforeStartStyle();
+      this.colors.color1 = INITIAL_STEAK_COLOR;
+      this.colors.color2 = INITIAL_STEAK_COLOR;
     };
 
     this.interval1 = setInterval(() => {
