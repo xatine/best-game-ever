@@ -1,0 +1,162 @@
+/* GENERAL */
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  font-size: 6px;
+  font-family: "Righteous", cursive;
+
+  @media screen and (max-width: 1064px) {
+    font-size: 0.6vw;
+  }
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+  background: #e6f4f7;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.grass {
+  width: 100%;
+  height: 20rem;
+  background: #14b742;
+  position: absolute;
+  bottom: 0;
+}
+
+.title {
+  margin-top: 4rem;
+  font-size: 9rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #ffd400;
+  text-shadow: -2px 0 black, 0 2px white, 2px 0 white, 0 -2px black;
+}
+
+.buttons {
+  display: flex;
+  margin-bottom: 5rem;
+}
+
+.button {
+  margin-top: 3rem;
+  border: 2px solid #2c2c2c;
+  background: transparent;
+  font-size: 4rem;
+  cursor: pointer;
+  padding: 1rem 2rem;
+  border-radius: 2rem;
+  font-family: "Righteous", cursive;
+  transition: color 0.3s ease-in-out;
+  z-index: 3;
+
+  &:hover {
+    color: #ffd400;
+  }
+}
+
+/* GRILL */
+.grill {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  bottom: 40rem;
+  left: 40rem;
+
+  &__grate {
+    width: 80rem;
+    height: 26rem;
+    background: #2c2c2c;
+    border-radius: 0 0 40rem 40rem;
+    position: relative;
+
+    &:before {
+      content: "";
+      width: 5rem;
+      height: 40rem;
+      background: #2c2c2c;
+      position: absolute;
+      top: 20rem;
+      left: 18rem;
+      transform: rotate(20deg);
+    }
+
+    &:after {
+      content: "";
+      width: 5rem;
+      height: 40rem;
+      background: #2c2c2c;
+      position: absolute;
+      top: 20rem;
+      right: 18rem;
+      transform: rotate(-20deg);
+    }
+  }
+
+  &__steak {
+    width: 50rem;
+    height: 14rem;
+    border-radius: 4rem;
+    background: linear-gradient(to bottom, var(--color1), var(--color2));
+    margin-bottom: 0.2rem;
+    display: none;
+  }
+}
+
+/* SCORE BOARD */
+.score {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  right: 8rem;
+  top: 1rem;
+
+  &__row {
+    display: flex;
+    align-items: center;
+  }
+
+  &__icon {
+    width: 10rem;
+  }
+
+  &__text {
+    font-size: 5rem;
+    padding-left: 2rem;
+  }
+}
+
+/* ID */
+#steak {
+  display: none;
+}
+
+#start {
+  display: block;
+}
+
+#rotate {
+  display: none;
+}
+
+#remove {
+  display: none;
+}
+
+#heat {
+  display: none;
+  width: 24rem;
+}

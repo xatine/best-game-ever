@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Steak Maker</title>
+    <link rel="stylesheet" href="main.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Righteous&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="app">
+      <div class="grass"></div>
+
+      <div class="title">Steak Maker</div>
+
+      <div class="buttons">
+        <button class="button" id="start">Cook</button>
+        <button class="button" id="rotate">Flip</button>
+        <button class="button" id="remove">Remove</button>
+      </div>
+
+      <div class="score">
+        <div class="score__row">
+          <img src="assets/raw.png" alt="" class="score__icon" />
+          <p class="score__text" id="raw">0</p>
+        </div>
+
+        <div class="score__row">
+          <img src="assets/meat.png" alt="" class="score__icon" />
+          <p class="score__text" id="done">0</p>
+        </div>
+
+        <div class="score__row">
+          <img src="assets/burnt.png" alt="" class="score__icon" />
+          <p class="score__text" id="burnt">0</p>
+        </div>
+      </div>
+
+      <div class="grill">
+        <img src="assets/heat.png" alt="" id="heat" />
+        <div id="steak" class="grill__steak"></div>
+        <div class="grill__grate"></div>
+      </div>
+    </div>
+    <script src="main.js"></script>
+  </body>
+</html>
