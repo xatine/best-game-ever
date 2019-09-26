@@ -1,6 +1,6 @@
 const ROAST_DEGREE = 1;
 const BOTTOM_INTERVAL = 50;
-const TOP_INTERVAL = 100;
+const TOP_INTERVAL = 700;
 const ROAST_CHECK_INTERVAL = 100;
 const INITIAL_STEAK_COLOR = [255, 195, 201];
 
@@ -35,12 +35,12 @@ const setBeforeStartStyle = () => {
   startButton.style.display = "block";
   rotateButton.style.display = "none";
   removeButton.style.display = "none";
-  steak.style.display = "none";
+  steak.style.opacity = 0;
   heat.style.display = "none";
 };
 
 const setAfterStartStyle = () => {
-  steak.style.display = "block";
+  steak.style.opacity = 1;
   heat.style.display = "block";
   startButton.style.display = "none";
   rotateButton.style.display = "block";
@@ -54,8 +54,6 @@ class Grill {
     });
 
     startButton.addEventListener("click", () => {
-      this.colors.color1 = INITIAL_STEAK_COLOR;
-      this.colors.color2 = INITIAL_STEAK_COLOR;
       this.startRoasting();
       this.startTimer();
       setAfterStartStyle();
@@ -102,6 +100,8 @@ class Grill {
         burntInfo.textContent = burnt;
         setBeforeStartStyle();
       }
+      this.colors.color1 = INITIAL_STEAK_COLOR;
+      this.colors.color2 = INITIAL_STEAK_COLOR;
     });
   }
 
@@ -140,9 +140,7 @@ class Grill {
     const gameOver = () => {
       burnt++;
       burntInfo.textContent = burnt;
-      clearInterval(this.interval1);
-      clearInterval(this.interval2);
-      clearInterval(this.roastCheckInterval);
+      clearIntervals([this.interval1, this.interval2, this.roastCheckInterval]);
       setBeforeStartStyle();
     };
 
